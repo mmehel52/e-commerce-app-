@@ -15,7 +15,7 @@ import Brand from "../images/brand2.png";
 
 const Header = () => {
   const { state, dispatch } = useContext(Store);
-  const { userInfo } = state;
+  const { userInfo, cart } = state;
 
   const logout = () => {
     window.open(`${process.env.REACT_APP_API_URL}/auth/logout`, "_self");
@@ -42,10 +42,10 @@ const Header = () => {
           <Navbar.Collapse id="basic-navbar-nav" />
           <SearchBox />
           <Nav className="me-auto  w-100  justify-content-end">
-            <Link to="/cart" className="nav-link">
-              Cart
+            <Link to="/card" className="nav-link">
+              Sepet{" "}
               <Badge pill bg="danger">
-                5
+                {cart.cartItems.length}
               </Badge>
             </Link>
             {userInfo ? (

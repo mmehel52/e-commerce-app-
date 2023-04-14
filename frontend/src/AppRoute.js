@@ -7,6 +7,7 @@ import ResetPassword from "./pages/ResetPassword";
 import Signin from "./pages/Signin";
 import SearchPage from "./pages/SearchPage";
 import ProductDetail from "./pages/ProductDetail";
+import CardPage from "./pages/CardPage";
 
 const AppRoute = () => {
   return (
@@ -18,6 +19,7 @@ const AppRoute = () => {
       <Route path="/verify/:id/:token" element={<EmailVerify />} />
       <Route path="/product/:id" element={<ProductDetail />} />
       <Route path="/search" element={<SearchPage />} />
+      <Route path="/card" element={<CardPage />} />
     </Routes>
   );
 };

@@ -48,3 +48,14 @@ li {
 .det-image {
   height: 40vh;
 }
+
+.scroll {
+  max-height: 60vh;
+  overflow-y: scroll;
+}
+.scroll::-webkit-scrollbar {
+  display: none;
+}
+.card-height {
+  height: 70vh;
+}

@@ -15,8 +15,9 @@ const generateToken = (user) => {
   );
 };
 
-const isAuth = (req, res, next) => {
+const isAuth = async (req, res, next) => {
   const token = req.cookies.jwt;
+  console.log(token);
   if (token) {
     jwt.verify(token, process.env.JWT_SECRET, (err, decode) => {
       if (err) {

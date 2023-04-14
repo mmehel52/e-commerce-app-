@@ -72,7 +72,6 @@ const ProductDetail = () => {
 
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const { cart, userInfo } = state;
-
   const addToCartHandler = async () => {
     const existItem = cart.cartItems.find((x) => x._id === product._id);
     const quantity = existItem ? existItem.quantity + 1 : 1;
@@ -91,6 +90,7 @@ const ProductDetail = () => {
     try {
       const { data } = await axios.post(
         `${process.env.REACT_APP_BASE_URI}/api/products/${product._id}/reviews`,
+
         { rating, comment, name: userInfo.name }
       );
 

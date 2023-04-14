@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 const Footer = () => {
   return (
-    <div className=" pt-5 bg  d-flex flex-column ">
+    <div className=" pt-5 bg  d-flex flex-column">
       <div className="row gap-1 justify-content-center  ">
         <div className=" col-sm-8  col-lg-3 d-flex flex-column align-items-center ">
           <h2>Keşfedin</h2>
