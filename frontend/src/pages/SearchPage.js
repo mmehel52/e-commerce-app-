@@ -229,7 +229,9 @@ const SearchPage = () => {
         <div className="col-12 col-lg-10 position-relative">
           <div className="mb-3">
             {loading ? (
-              <LoadingBox />
+              <div className="text-center">
+                <LoadingBox />
+              </div>
             ) : error ? (
               <MessageBox variant="danger">{error}</MessageBox>
             ) : (

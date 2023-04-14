@@ -12,6 +12,7 @@ import { BsFilePerson } from "react-icons/bs";
 import { Store } from "../Store";
 import { toast } from "react-toastify";
 import Brand from "../images/brand2.png";
+import { removeCookie } from "../cookies";
 
 const Header = () => {
   const { state, dispatch } = useContext(Store);
@@ -26,6 +27,7 @@ const Header = () => {
     localStorage.removeItem("userInfo");
     logout();
     toast.success("you are sign out succesfully.");
+    removeCookie("jwt");
     window.location.href = "/signin";
   };
 

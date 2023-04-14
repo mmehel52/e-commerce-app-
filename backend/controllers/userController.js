@@ -95,6 +95,7 @@ const signin = expressAsyncHandler(async (req, res) => {
     name: user.name,
     email: user.email,
     isAdmin: user.isAdmin,
+    token: token,
   });
   return;
 });

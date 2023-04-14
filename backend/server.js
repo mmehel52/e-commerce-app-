@@ -37,7 +37,6 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(express.json());
 app.use(
   cors({
     methods: "GET,POST,PUT,DELETE",
@@ -45,8 +44,15 @@ app.use(
     credentials: "include",
   })
 );
+
+app.use(
+  cookieParser({
+    origin: "http://localhost:3000",
+    credentials: true,
+  })
+);
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser());
 
 app.use(
   mongoSanitize({

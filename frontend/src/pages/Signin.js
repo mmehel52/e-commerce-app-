@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import Signup from "./Signup";
 import Google from "../images/google.png";
 import Brand from "../images/brand2.png";
+import { removeCookie, setCookie } from "../cookies";
 
 const Signin = () => {
   const navigate = useNavigate();
@@ -35,9 +36,12 @@ const Signin = () => {
         }
       );
       setLoading(false);
+      removeCookie("jwt");
+      setCookie("jwt", data.token);
       toast.success("you are sign in succesfully");
       dispatch({ type: "USER_SIGNIN", payload: data });
       localStorage.setItem("userInfo", JSON.stringify(data));
+      console.log(data);
       navigate("/");
     } catch (err) {
       toast.error(getError(err));

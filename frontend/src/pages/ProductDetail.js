@@ -19,6 +19,7 @@ import { getError } from "../utils";
 import { Store } from "../Store";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import { getCookie } from "../cookies";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -81,6 +82,7 @@ const ProductDetail = () => {
     });
     navigate("/cart");
   };
+  const token = getCookie("jwt");
   const submitHandler = async (e) => {
     e.preventDefault();
     if (!comment || !rating) {
@@ -91,7 +93,10 @@ const ProductDetail = () => {
       const { data } = await axios.post(
         `${process.env.REACT_APP_BASE_URI}/api/products/${product._id}/reviews`,
 
-        { rating, comment, name: userInfo.name }
+        { rating, comment, name: userInfo.name },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
       );
 
       dispatch({
