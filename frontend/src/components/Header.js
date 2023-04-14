@@ -30,7 +30,7 @@ const Header = () => {
   };
 
   return (
-    <header>
+    <header className=" w-100">
       <Navbar className="bg" expand="lg">
         <Container>
           <LinkContainer to="/">

@@ -29,7 +29,7 @@ const CardPage = () => {
     navigate("/signin?redirect=/shipping");
   };
   return (
-    <div className="bg-light position-relative">
+    <div className="bg-light ">
       <Helmet>
         <title>Sepet</title>
       </Helmet>
@@ -141,9 +141,7 @@ const CardPage = () => {
         </div>
       </div>
 
-      <div className="position-fixed w-100">
-        <Footer />
-      </div>
+      <Footer />
     </div>
   );
 };
