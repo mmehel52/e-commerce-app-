@@ -136,7 +136,7 @@ const SearchPage = () => {
 
   return (
     <div className="d-flex flex-row">
-      <div>
+      <div className="">
         <Sidebar
           getFilterUrl={getFilterUrl}
           categories={categories}
@@ -149,7 +149,7 @@ const SearchPage = () => {
       </div>
       <div className="w-100">
         <Header />
-        <div className="">
+        <div className="px-3">
           <div className="mb-3">
             {loading ? (
               <div className="text-center">

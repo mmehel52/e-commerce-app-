@@ -18,7 +18,7 @@ const Sidebar = ({
   const toggle = () => setIsOpen(!isOpen);
 
   return (
-    <div className="search-sidebar-container">
+    <div className="">
       <div
         style={{ width: isOpen ? "200px" : "50px" }}
         className="search-sidebar"

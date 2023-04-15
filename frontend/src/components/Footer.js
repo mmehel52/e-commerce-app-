@@ -7,9 +7,9 @@ const Footer = () => {
         <Link to="/" className="text-decoration-none">
           Anasayfa
         </Link>
-        <Link className="text-decoration-none">Kariyer</Link>
-        <Link className="text-decoration-none">SSS</Link>
-        <Link className="text-decoration-none">Hakkımızda</Link>
+        <Link className="text-decoration-none ">Kariyer</Link>
+        <Link className="text-decoration-none ">SSS</Link>
+        <Link className="text-decoration-none ">Hakkımızda</Link>
       </div>
       <div className="mt-3 text-center">
         <p>© 2023 JuniusTech</p>
