@@ -18,9 +18,7 @@
   align-items: center;
   padding: 20px 15px;
 }
-.sidebar-logo {
-  font-size: 30px;
-}
+
 .sidebar-bars {
   display: flex;
   font-size: 25px;

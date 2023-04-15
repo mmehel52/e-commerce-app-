@@ -11,7 +11,7 @@ import { BsFillPersonFill } from "react-icons/bs";
 import { BsFilePerson } from "react-icons/bs";
 import { Store } from "../Store";
 import { toast } from "react-toastify";
-import Brand from "../images/brand2.png";
+import Brand from "../images/brand.png";
 import { removeCookie } from "../cookies";
 
 const Header = () => {
@@ -37,7 +37,7 @@ const Header = () => {
         <Container>
           <LinkContainer to="/">
             <Navbar.Brand>
-              <img src={Brand} alt="" className="logo brand-image" />
+              <img src={Brand} alt="" className="brand-image" />
             </Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />

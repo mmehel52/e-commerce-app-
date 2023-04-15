@@ -10,7 +10,7 @@ import LoadingBox from "../components/LoadingBox";
 import { useNavigate } from "react-router-dom";
 import Signup from "./Signup";
 import Google from "../images/google.png";
-import Brand from "../images/brand2.png";
+import Brand from "../images/brand.png";
 import { removeCookie, setCookie } from "../cookies";
 
 const Signin = () => {

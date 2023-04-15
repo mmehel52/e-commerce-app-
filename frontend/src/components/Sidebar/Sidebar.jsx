@@ -12,6 +12,7 @@ import {
   FaPencilAlt,
 } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
+import Brand from "../../images/brand.png";
 
 const Sidebar = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -63,12 +64,13 @@ const Sidebar = ({ children }) => {
     <div className="sidebar-container">
       <div style={{ width: isOpen ? "200px" : "50px" }} className="sidebar">
         <div className="sidebar-top_section">
-          <h1
+          <img
             style={{ display: isOpen ? "block" : "none" }}
-            className="sidebar-logo"
-          >
-            Logo
-          </h1>
+            className="w-50"
+            src={Brand}
+            alt=""
+          />
+
           <div
             style={{ marginLeft: isOpen ? "50px" : "0px" }}
             className="sidebar-bars"
