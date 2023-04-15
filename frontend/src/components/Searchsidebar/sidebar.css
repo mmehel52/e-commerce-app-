@@ -4,6 +4,7 @@
 }
 .search-sidebar-main {
   width: 100%;
+  padding: 20px;
 }
 .search-sidebar {
   background: #000;
@@ -15,12 +16,12 @@
 .search-sidebar-top_section {
   display: flex;
   align-items: center;
-  padding: 10px;
+  padding: 15px;
 }
 
 .search-sidebar-bars {
   display: flex;
-  font-size: 2px;
+  font-size: 25px;
   margin-left: 50px;
 }
 .search-sidebar-link {
@@ -42,7 +43,7 @@
 }
 .search-sidebar-icon,
 .search-sidebar-link_text {
-  font-size: 17px;
+  font-size: 20px;
   color: white;
   text-decoration: none;
 }

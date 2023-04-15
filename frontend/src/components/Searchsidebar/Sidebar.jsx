@@ -132,7 +132,7 @@ const Sidebar = ({
             ))}
           </ul>
         </div>
-        <div
+        {/* <div
           className="search-sidebar-link text-decoration-none"
           activeclassName="search-sidebar-active"
         >
@@ -145,8 +145,8 @@ const Sidebar = ({
           >
             Puan
           </div>
-        </div>
-        <div>
+        </div> */}
+        {/* <div>
           <ul>
             {ratings.map((r) => (
               <li key={r.name}>
@@ -177,7 +177,7 @@ const Sidebar = ({
               </NavLink>
             </li>
           </ul>
-        </div>
+        </div> */}
       </div>
       <main className="search-sidebar-main">{children}</main>
     </div>
