@@ -1,4 +1,5 @@
 import React, { useEffect, useReducer, useState } from "react";
+import Sidebar from "../components/Searchsidebar/Sidebar";
 import Header from "../components/Header";
 import { toast } from "react-toastify";
 import { getError } from "../utils";
@@ -134,99 +135,21 @@ const SearchPage = () => {
   };
 
   return (
-    <div>
-      <Header />
-      <div className="row gap-2">
-        <div className=" col-12  col-lg-2 bg border z-index-n2 row">
-          <div className=" mb-2 py-2 text-center fs-4 col-4 col-lg-12">
-            <h3>Kategoriler</h3>
-            <ul>
-              <li>
-                <Link
-                  className={
-                    "all" === category ? "text-bold" : "text-decoration-none"
-                  }
-                  to={getFilterUrl({ category: "all" })}
-                >
-                  Tümü
-                </Link>
-              </li>
-              {categories.map((item) => (
-                <li key={item._id}>
-                  <Link
-                    className={
-                      item.title === category
-                        ? "text-bold"
-                        : "text-decoration-none"
-                    }
-                    to={getFilterUrl({ category: item.title })}
-                  >
-                    {item.title}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="  py-2 text-center fs-4 col-4 col-lg-12">
-            <h3>Fiyat</h3>
-            <ul>
-              <li>
-                <Link
-                  className={
-                    "all" === price ? "text-bold" : "text-decoration-none"
-                  }
-                  to={getFilterUrl({ price: "all" })}
-                >
-                  Tümü
-                </Link>
-              </li>
-              {prices.map((item) => (
-                <li key={item.value}>
-                  <Link
-                    className={
-                      item.value === price
-                        ? "text-bold"
-                        : "text-decoration-none"
-                    }
-                    to={getFilterUrl({ price: item.value })}
-                  >
-                    {item.value}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="   py-2 text-center fs-4 col-4 col-lg-12">
-            <h3>Puan</h3>
-            <ul>
-              {ratings.map((r) => (
-                <li key={r.name}>
-                  <Link
-                    to={getFilterUrl({ rating: r.rating })}
-                    className={
-                      `${r.rating}` === `${rating}`
-                        ? "text-bold"
-                        : "text-decoration-none"
-                    }
-                  >
-                    {r.name}
-                  </Link>
-                </li>
-              ))}
-              <li>
-                <Link
-                  to={getFilterUrl({ rating: "all" })}
-                  className={
-                    rating === "all" ? "text-bold" : "text-decoration-none"
-                  }
-                >
-                  Tümü
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div className="col-12 col-lg-10 position-relative">
+    <div className="d-flex flex-row">
+      <div>
+        <Sidebar
+          getFilterUrl={getFilterUrl}
+          categories={categories}
+          category={category}
+          price={price}
+          prices={prices}
+          rating={rating}
+          ratings={ratings}
+        />
+      </div>
+      <div className="w-100">
+        <Header />
+        <div className="">
           <div className="mb-3">
             {loading ? (
               <div className="text-center">
@@ -306,8 +229,10 @@ const SearchPage = () => {
             )}
           </div>
         </div>
+        <div className="">
+          <Footer />
+        </div>
       </div>
-      <Footer />
     </div>
   );
 };
