@@ -82,7 +82,6 @@ const ProductDetail = () => {
     });
     navigate("/cart");
   };
-  const token = getCookie("jwt");
   const submitHandler = async (e) => {
     e.preventDefault();
     if (!comment || !rating) {
@@ -90,13 +89,10 @@ const ProductDetail = () => {
       return;
     }
     try {
+      axios.defaults.withCredentials = true;
       const { data } = await axios.post(
         `${process.env.REACT_APP_BASE_URI}/api/products/${product._id}/reviews`,
-
-        { rating, comment, name: userInfo.name },
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
+        { rating, comment, name: userInfo.name }
       );
 
       dispatch({
@@ -148,22 +144,32 @@ const ProductDetail = () => {
                 <h4>Açıklama</h4>
                 <p>{product.description}</p>
               </div>
-              <div>
-                <h4>Renkler</h4>
-                <div className="d-flex flex-row flex-wrap gap-2 ">
-                  {product.colours.map((x) => (
-                    <div
-                      onMouseOver={x}
-                      className="border rounded-circle"
-                      style={{
-                        backgroundColor: x,
-                        width: "20px",
-                        height: "20px",
-                      }}
-                    ></div>
-                  ))}
+              {product.colours.length > 0 && (
+                <div>
+                  <h4>Renkler</h4>
+                  <select
+                    class="form-select"
+                    aria-label="Default select example"
+                  >
+                    <option selected>Renk seçin</option>
+                    {product.colours.map((x) => (
+                      <option value={x}>
+                        <div className="d-flex flex-row">
+                          <div
+                            className="border rounded-circle"
+                            style={{
+                              backgroundColor: x,
+                              width: "20px",
+                              height: "20px",
+                            }}
+                          ></div>
+                          <div>{x}</div>
+                        </div>
+                      </option>
+                    ))}
+                  </select>
                 </div>
-              </div>
+              )}
               {product.soldout ? (
                 <Button size="lg" className="btn-danger border-0 fs-4 mt-2">
                   Tükendi
