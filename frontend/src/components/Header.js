@@ -2,13 +2,11 @@ import React, { useContext } from "react";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
-import NavDropdown from "react-bootstrap/NavDropdown";
 import Badge from "react-bootstrap/Badge";
 import { LinkContainer } from "react-router-bootstrap";
 import { Link } from "react-router-dom";
 import SearchBox from "./SearchBox";
-import { BsFillPersonFill } from "react-icons/bs";
-import { BsFilePerson } from "react-icons/bs";
+import { BiExit } from "react-icons/bi";
 import { Store } from "../Store";
 import { toast } from "react-toastify";
 import Brand from "../images/brand.png";
@@ -33,17 +31,18 @@ const Header = () => {
 
   return (
     <header className=" w-100">
-      <Navbar className="bg" expand="lg">
+      <Navbar className="bg my-0" expand="lg">
         <Container>
           <LinkContainer to="/">
-            <Navbar.Brand>
+            <Navbar.Brand className="d-flex flex-row align-items-center gap-3">
               <img src={Brand} alt="" className="brand-image" />
+              <h1>Terzim </h1>
             </Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav" />
           <SearchBox />
-          <Nav className="me-auto  w-100  justify-content-end">
+          <Nav className="  w-100  justify-content-end">
             <Link to="/card" className="nav-link">
               Sepet{" "}
               <Badge pill bg="danger">
@@ -52,30 +51,24 @@ const Header = () => {
             </Link>
             {userInfo ? (
               <>
-                <NavDropdown title={userInfo.name} id="basic-nav-dropdown">
-                  <LinkContainer to="/profile">
-                    <NavDropdown.Item>User Profile</NavDropdown.Item>
-                  </LinkContainer>
-                  <LinkContainer to="/orderhistory">
-                    <NavDropdown.Item>Order History</NavDropdown.Item>
-                  </LinkContainer>
-                  <NavDropdown.Divider />
-                  <Link
-                    className="dropdown-item nav-link"
-                    to="#signout"
-                    onClick={signOut}
-                  >
-                    Sign Out
+                {" "}
+                <Link to="/user" className="nav-link">
+                  {userInfo.name}
+                </Link>
+                {userInfo.isAdmin && (
+                  <Link to="/admin" className="nav-link">
+                    Admin
                   </Link>
-                </NavDropdown>
-                <BsFilePerson className="fs-1 text-light" />
+                )}
+                <Link to="#signout" className="nav-link" onClick={signOut}>
+                  <BiExit className="fs-1 " />
+                </Link>
               </>
             ) : (
               <>
                 <div className="d-flex flex-row justify-items-center text-light  cursor">
-                  <BsFillPersonFill className="fs-1" />
                   <Link to="/signin" className="nav-link">
-                    Signin
+                    Giriş
                   </Link>
                 </div>
               </>
