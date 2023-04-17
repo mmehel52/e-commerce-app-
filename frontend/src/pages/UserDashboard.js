@@ -1,7 +1,7 @@
 import React from "react";
-import Sidebar from "../components/admin-sidebar/Sidebar";
+import Sidebar from "../components/user-sidebar/Sidebar";
 
-const Dashboard = () => {
+const UserDashboard = () => {
   return (
     <div className="d-flex flex-row">
       <Sidebar />
@@ -12,4 +12,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default UserDashboard;

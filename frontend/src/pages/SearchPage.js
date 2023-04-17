@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer, useState } from "react";
-import Sidebar from "../components/Searchsidebar/Sidebar";
+import Sidebar from "../components/search-sidebar/Sidebar";
 import Header from "../components/Header";
 import { toast } from "react-toastify";
 import { getError } from "../utils";
@@ -135,8 +135,8 @@ const SearchPage = () => {
   };
 
   return (
-    <div className="d-flex flex-row">
-      <div className="">
+    <div className="d-flex flex-row position-relative">
+      <div className=" ">
         <Sidebar
           getFilterUrl={getFilterUrl}
           categories={categories}
@@ -147,9 +147,9 @@ const SearchPage = () => {
           ratings={ratings}
         />
       </div>
-      <div className="w-100">
+      <div className="w-100 ">
         <Header />
-        <div className="px-3">
+        <div className="px-3 searchpage-main">
           <div className="mb-3">
             {loading ? (
               <div className="text-center">
@@ -196,40 +196,42 @@ const SearchPage = () => {
                 {products?.length === 0 && (
                   <MessageBox>No Product Found</MessageBox>
                 )}
-                <div className="row mb-5">
-                  {products?.map((product) => (
-                    <div
-                      className="mb-3  col-sm-6 col-md-4 col-lg-2"
-                      key={product._id}
-                    >
-                      <Product product={product}></Product>
-                    </div>
-                  ))}
-                </div>
-                <div className="position-absolute bottom-0 start-50  ">
-                  {[...Array(pages).keys()].map((x) => (
-                    <Link
-                      key={x + 1}
-                      className="mx-1"
-                      to={{
-                        pathname: "/search",
-                        search: getFilterUrl({ page: x + 1 }, true),
-                      }}
-                    >
-                      <Button
-                        className={Number(page) === x + 1 ? "text-bold" : ""}
-                        variant="light"
+                <div className="position-relative">
+                  <div className="row mb-5">
+                    {products?.map((product) => (
+                      <div
+                        className="mb-3  col-sm-6 col-md-4 col-lg-2"
+                        key={product._id}
                       >
-                        {x + 1}
-                      </Button>
-                    </Link>
-                  ))}
+                        <Product product={product}></Product>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="mt-5 position-absolute bottom-0 start-50">
+                    {[...Array(pages).keys()].map((x) => (
+                      <Link
+                        key={x + 1}
+                        className="mx-1"
+                        to={{
+                          pathname: "/search",
+                          search: getFilterUrl({ page: x + 1 }, true),
+                        }}
+                      >
+                        <Button
+                          className={Number(page) === x + 1 ? "text-bold" : ""}
+                          variant="light"
+                        >
+                          {x + 1}
+                        </Button>
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               </>
             )}
           </div>
         </div>
-        <div className="">
+        <div>
           <Footer />
         </div>
       </div>

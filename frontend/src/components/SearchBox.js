@@ -21,7 +21,7 @@ const SearchBox = () => {
           id="q"
           className="input-lg fs-3"
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="search products..."
+          placeholder="ürün yazın..."
           aria-label="Search Products"
           aria-describedby="button-search"
         ></FormControl>

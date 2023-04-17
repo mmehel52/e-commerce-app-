@@ -1,6 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Electrolize&display=swap");
-body {
+* {
   margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+}
+body {
   font-family: "Electrolize", sans-serif;
   font-size: 15px;
 }
@@ -57,4 +61,7 @@ li {
 }
 .card-height {
   height: 70vh;
+}
+.searchpage-main {
+  min-height: 80vh;
 }

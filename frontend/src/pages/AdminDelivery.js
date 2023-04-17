@@ -1,7 +1,7 @@
 import React from "react";
-import Sidebar from "../components/Sidebar/Sidebar";
+import Sidebar from "../components/admin-sidebar/Sidebar";
 
-const Deivery = () => {
+const AdminDeivery = () => {
   return (
     <div className="d-flex flex-row">
       <Sidebar />
@@ -12,4 +12,4 @@ const Deivery = () => {
   );
 };
 
-export default Deivery;
+export default AdminDeivery;

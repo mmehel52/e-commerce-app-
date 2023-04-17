@@ -11,10 +11,11 @@ import {
   FaShuttleVan,
   FaPencilAlt,
 } from "react-icons/fa";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Brand from "../../images/brand.png";
 
 const Sidebar = ({ children }) => {
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
   const menuItem = [
@@ -69,6 +70,7 @@ const Sidebar = ({ children }) => {
             className="w-50"
             src={Brand}
             alt=""
+            onClick={() => navigate("/")}
           />
 
           <div
