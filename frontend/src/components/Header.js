@@ -32,48 +32,55 @@ const Header = () => {
   return (
     <header className=" w-100">
       <Navbar className="bg my-0" expand="lg">
-        <Container>
+        <Container className="px-5 ">
           <LinkContainer to="/">
             <Navbar.Brand className="d-flex flex-row align-items-center gap-3">
               <img src={Brand} alt="" className="brand-image" />
               <h1>Terzim </h1>
             </Navbar.Brand>
           </LinkContainer>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav" />
-          <SearchBox />
-          <Nav className="  w-100  justify-content-end">
-            <Link to="/card" className="nav-link">
-              Sepet{" "}
-              <Badge pill bg="danger">
-                {cart.cartItems.length}
-              </Badge>
-            </Link>
-            {userInfo ? (
-              <>
-                {" "}
-                <Link to="/user" className="nav-link">
-                  {userInfo.name}
-                </Link>
-                {userInfo.isAdmin && (
-                  <Link to="/admin" className="nav-link">
-                    Admin
+          <Navbar.Toggle
+            data-toggle="collapse"
+            data-target="basic-navbar-nav"
+            aria-controls="basic-navbar-nav"
+            aria-expanded="false"
+            label="Toggle navigation"
+          />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <SearchBox />
+            <Nav className="  w-100  justify-content-end">
+              <Link to="/card" className="nav-link">
+                Sepet{" "}
+                <Badge pill bg="danger">
+                  {cart.cartItems.length}
+                </Badge>
+              </Link>
+              {userInfo ? (
+                <>
+                  {" "}
+                  <Link to="/user" className="nav-link">
+                    {userInfo.name}
                   </Link>
-                )}
-                <Link to="#signout" className="nav-link" onClick={signOut}>
-                  <BiExit className="fs-1 " />
-                </Link>
-              </>
-            ) : (
-              <>
-                <div className="d-flex flex-row justify-items-center text-light  cursor">
-                  <Link to="/signin" className="nav-link">
-                    Giriş
+                  {userInfo.isAdmin && (
+                    <Link to="/admin" className="nav-link">
+                      Admin
+                    </Link>
+                  )}
+                  <Link to="#signout" className="nav-link" onClick={signOut}>
+                    <BiExit className="fs-1 " />
                   </Link>
-                </div>
-              </>
-            )}
-          </Nav>
+                </>
+              ) : (
+                <>
+                  <div className="d-flex flex-row justify-items-center text-light  cursor">
+                    <Link to="/signin" className="nav-link">
+                      Giriş
+                    </Link>
+                  </div>
+                </>
+              )}
+            </Nav>
+          </Navbar.Collapse>
         </Container>
       </Navbar>
     </header>

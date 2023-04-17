@@ -149,7 +149,7 @@ const SearchPage = () => {
       </div>
       <div className="w-100 ">
         <Header />
-        <div className="px-3 searchpage-main">
+        <div className="p-3 searchpage-main">
           <div className="mb-3">
             {loading ? (
               <div className="text-center">
@@ -161,7 +161,7 @@ const SearchPage = () => {
               <>
                 <div className="mb-3 d-flex flex-row align-items-center  justify-content-between">
                   <div>
-                    {countProducts === 0 ? "No" : countProducts} Results
+                    {countProducts === 0 ? "ürün yok" : countProducts + "ürün"}
                     {query !== "all" && " : " + query}
                     {category !== "all" && " : " + category}
                     {price !== "all" && " : Price " + price}
@@ -179,22 +179,22 @@ const SearchPage = () => {
                     ) : null}
                   </div>
                   <div>
-                    Sort by{" "}
+                    Sırala:{" "}
                     <select
                       value={order}
                       onChange={(e) => {
                         navigate(getFilterUrl({ order: e.target.value }));
                       }}
                     >
-                      <option value="newest">Newest Arrivals</option>
-                      <option value="lowest">Price: Low to High</option>
-                      <option value="highest">Price: High to Low</option>
-                      <option value="toprated">Avg. Customer Reviews</option>
+                      <option value="newest">Yeni Ürünler</option>
+                      <option value="lowest">Fiyat Düşükten Yükseğe</option>
+                      <option value="highest">Fiyat Yüksekten Düşüğe</option>
+                      <option value="toprated">Puana göre</option>
                     </select>
                   </div>
                 </div>
                 {products?.length === 0 && (
-                  <MessageBox>No Product Found</MessageBox>
+                  <MessageBox>Ürün Bulunamadı</MessageBox>
                 )}
                 <div className="position-relative">
                   <div className="row mb-5">

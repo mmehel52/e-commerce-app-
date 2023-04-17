@@ -17,7 +17,6 @@ import AdminDelivery from "./pages/AdminDelivery";
 import AdminAnalitic from "./pages/AdminAnalitic";
 import AdminReview from "./pages/AdminReview";
 import UserDashboard from "./pages/UserDashboard";
-import Dnm from "./pages/Dnm";
 
 const AppRoute = () => {
   return (
@@ -39,7 +38,6 @@ const AppRoute = () => {
       <Route path="/admin/analitic" element={<AdminAnalitic />} />
       <Route path="/admin/review" element={<AdminReview />} />
       <Route path="/user" element={<UserDashboard />} />
-      <Route path="/dnm" element={<Dnm />} />
     </Routes>
   );
 };
