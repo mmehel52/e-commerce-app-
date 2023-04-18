@@ -41,7 +41,7 @@ const Sidebar = ({
 
         <div
           className="search-sidebar-link text-decoration-none"
-          activeclassName="search-sidebar-active"
+          // activeclassName="search-sidebar-active"
         >
           <div className="search-sidebar-icon">
             <FaThList />
@@ -85,10 +85,7 @@ const Sidebar = ({
             ))}
           </ul>
         </div>
-        <div
-          className="search-sidebar-link text-decoration-none"
-          activeclassName="search-sidebar-active"
-        >
+        <div className="search-sidebar-link text-decoration-none">
           <div className="search-sidebar-icon">
             <FaThList />
           </div>

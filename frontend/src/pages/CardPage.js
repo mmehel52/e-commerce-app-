@@ -37,7 +37,7 @@ const CardPage = () => {
       <h1 className="text-center">Sepet</h1>
       <div className=" row card-height">
         <div className="col-0 col-lg-2"></div>
-        <div class="scroll mb-5 col-12 col-md-9 col-lg-6">
+        <div className="scroll mb-5 col-12 col-md-9 col-lg-6">
           {cartItems.length === 0 ? (
             <MessageBox>
               Sepet Boş <Link to="/">Alışverişe Git</Link>
@@ -50,6 +50,7 @@ const CardPage = () => {
                     Resim
                   </th>
                   <th scope="col">Ürün</th>
+                  <th scope="col">Renk</th>
                   <th scope="col">Miktar</th>
                   <th scope="col">Fiyat</th>
                   <th scope="col">Çıkar</th>
@@ -74,6 +75,22 @@ const CardPage = () => {
                       </Link>
                     </td>
                     <td>
+                      {item.colour ? (
+                        <>
+                          <div
+                            className="rounded-circle"
+                            style={{
+                              backgroundColor: item.colour,
+                              width: "20px",
+                              height: "20px",
+                            }}
+                          ></div>
+                        </>
+                      ) : (
+                        "-"
+                      )}
+                    </td>
+                    <td>
                       <Button
                         onClick={() =>
                           updateCartHandler(item, item.quantity - 1)
@@ -83,7 +100,7 @@ const CardPage = () => {
                       >
                         <i className="fas fa-minus-circle"></i>
                       </Button>{" "}
-                      <span>{item.quantity}</span>{" "}
+                      <span className="w-100">{item.quantity}</span>{" "}
                       <Button
                         variant="light"
                         disabled={item.quantity === item.countInStock}

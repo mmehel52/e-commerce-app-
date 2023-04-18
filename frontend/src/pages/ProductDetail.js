@@ -19,7 +19,6 @@ import { getError } from "../utils";
 import { Store } from "../Store";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import { getCookie } from "../cookies";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -44,7 +43,7 @@ const reducer = (state, action) => {
 
 const ProductDetail = () => {
   let reviewsRef = useRef();
-
+  const [colour, setColour] = useState("");
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
   const navigate = useNavigate();
@@ -74,13 +73,16 @@ const ProductDetail = () => {
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const { cart, userInfo } = state;
   const addToCartHandler = async () => {
-    const existItem = cart.cartItems.find((x) => x._id === product._id);
+    const existItem = cart.cartItems.find(
+      (x) => x._id === product._id && x.colour === colour
+    );
+
     const quantity = existItem ? existItem.quantity + 1 : 1;
     ctxDispatch({
       type: "CART_ADD_ITEM",
-      payload: { ...product, quantity },
+      payload: { ...product, quantity, colour },
     });
-    navigate("/cart");
+    navigate("/card");
   };
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -122,7 +124,7 @@ const ProductDetail = () => {
         <MessageBox variant="danger">{error}</MessageBox>
       ) : (
         <div className="bg-light ">
-          <div className="row d-flex flex-row justify-content-center gap-1 ">
+          <div className="row d-flex flex-row justify-content-center gap-1 mx-0 ">
             <div className="col-12 col-sm-9 col-md-7 col-lg-3  border rounded  bg-white">
               <img
                 src={product.picture}
@@ -148,23 +150,22 @@ const ProductDetail = () => {
                 <div>
                   <h4>Renkler</h4>
                   <select
-                    class="form-select"
+                    className="form-select"
                     aria-label="Default select example"
+                    onChange={(e) => setColour(e.target.value)}
                   >
-                    <option selected>Renk seçin</option>
+                    <option value="">Renk seçin</option>
                     {product.colours.map((x) => (
-                      <option value={x}>
-                        <div className="d-flex flex-row">
-                          <div
-                            className="border rounded-circle"
-                            style={{
-                              backgroundColor: x,
-                              width: "20px",
-                              height: "20px",
-                            }}
-                          ></div>
-                          <div>{x}</div>
-                        </div>
+                      <option
+                        key={x}
+                        value={x}
+                        style={{
+                          backgroundColor: x,
+                          width: "20px",
+                          height: "20px",
+                        }}
+                      >
+                        {x}
                       </option>
                     ))}
                   </select>
