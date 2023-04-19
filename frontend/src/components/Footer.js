@@ -12,7 +12,7 @@ const Footer = () => {
         <Link className="text-decoration-none ">Hakkımızda</Link>
       </div>
       <div className="mt-3 text-center">
-        <p>© 2023 JuniusTech</p>
+        <p>© {new Date().getFullYear()}JuniusTech</p>
       </div>
     </div>
   );

@@ -6,7 +6,7 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { BrowserRouter, Link, useNavigate, useParams } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
@@ -73,10 +73,7 @@ const ProductDetail = () => {
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const { cart, userInfo } = state;
   const addToCartHandler = async () => {
-    const existItem = cart.cartItems.find(
-      (x) => x._id === product._id && x.colour === colour
-    );
-
+    const existItem = cart.cartItems.find((x) => x._id === product._id);
     const quantity = existItem ? existItem.quantity + 1 : 1;
     ctxDispatch({
       type: "CART_ADD_ITEM",
@@ -149,26 +146,19 @@ const ProductDetail = () => {
               {product.colours.length > 0 && (
                 <div>
                   <h4>Renkler</h4>
-                  <select
-                    className="form-select"
-                    aria-label="Default select example"
-                    onChange={(e) => setColour(e.target.value)}
-                  >
-                    <option value="">Renk seçin</option>
+                  <div className="d-flex flex-row gap-2">
                     {product.colours.map((x) => (
-                      <option
+                      <div
                         key={x}
-                        value={x}
                         style={{
                           backgroundColor: x,
                           width: "20px",
                           height: "20px",
                         }}
-                      >
-                        {x}
-                      </option>
+                        onClick={() => setColour(x)}
+                      ></div>
                     ))}
-                  </select>
+                  </div>
                 </div>
               )}
               {product.soldout ? (
