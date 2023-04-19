@@ -12,6 +12,7 @@ const authRouter = require("./routes/auth");
 const session = require("express-session");
 const productRouter = require("./routes/productRoute");
 const orderRouter = require("./routes/orderRoute");
+const uploadRouter = require("./routes/uploadRoutes");
 
 dotenv.config();
 require("./passport");
@@ -67,6 +68,7 @@ app.use("/api/categories", categoryRouter);
 app.use("/api/products", productRouter);
 app.use("/api/orders", orderRouter);
 app.use("/api/password-reset", passwordResetRouter);
+app.use("/api/upload", uploadRouter);
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
