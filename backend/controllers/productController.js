@@ -104,7 +104,6 @@ const getProduct = expressAsyncHandler(async (req, res) => {
 const createProduct = expressAsyncHandler(async (req, res) => {
   const newProduct = new Product({
     name: req.body.name,
-    slug: req.body.slug,
     picture: req.body.picture,
     price: req.body.price,
     category: req.body.category,
@@ -121,7 +120,6 @@ const updateProduct = expressAsyncHandler(async (req, res) => {
   const product = await Product.findById(productId);
   if (product) {
     product.name = req.body.name || product.name;
-    product.slug = req.body.slug || product.slug;
     product.price = req.body.price || product.price;
     product.picture = req.body.picture || product.picture;
     product.category = req.body.category || product.category;
