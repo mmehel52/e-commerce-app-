@@ -20,6 +20,6 @@ orderRouter.get("/:id", getOrder);
 orderRouter.put("/:id/deliver", isAuth, deliverOrder);
 orderRouter.put("/:id/paid", isAuth, paidOrder);
 orderRouter.delete("/:id", isAuth, isAdmin, deleteOrder);
-orderRouter.post("/", isAuth, createOrder);
+orderRouter.post("/", createOrder);
 
 module.exports = orderRouter;

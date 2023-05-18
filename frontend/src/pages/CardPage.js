@@ -26,7 +26,7 @@ const CardPage = () => {
   };
 
   const checkoutHandler = () => {
-    navigate("/signin?redirect=/shipping");
+    navigate("/shipping");
   };
   return (
     <div className="bg-light ">

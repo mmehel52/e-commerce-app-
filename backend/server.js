@@ -41,9 +41,9 @@ app.use(passport.session());
 
 app.use(
   cors({
-    // origin: process.env.FRONTEND_BASE_URL,
-    // credentials: true,
-    // optionSuccessStatus: 200,
+    origin: process.env.FRONTEND_BASE_URL,
+    credentials: true,
+    optionSuccessStatus: 200,
   })
 );
 

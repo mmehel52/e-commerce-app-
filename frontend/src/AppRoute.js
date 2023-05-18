@@ -17,6 +17,9 @@ import AdminDelivery from "./pages/AdminDelivery";
 import AdminAnalitic from "./pages/AdminAnalitic";
 import AdminReview from "./pages/AdminReview";
 import UserDashboard from "./pages/UserDashboard";
+import ShippingAdress from "./pages/ShippingAdress";
+import PrivateRoute from "./components/PrivateRoute";
+import Payment from "./pages/Payment";
 
 const AppRoute = () => {
   return (
@@ -29,6 +32,12 @@ const AppRoute = () => {
       <Route path="/product/:id" element={<ProductDetail />} />
       <Route path="/search" element={<SearchPage />} />
       <Route path="/card" element={<CardPage />} />
+      <Route path="/shipping" element={<PrivateRoute />}>
+        <Route path="" element={<ShippingAdress />} />
+      </Route>
+      <Route path="/payment" element={<PrivateRoute />}>
+        <Route path="" element={<Payment />} />
+      </Route>
       <Route path="/admin" element={<Dashboard />} />
       <Route path="/admin/users" element={<UsersAdmin />} />
       <Route path="/admin/category" element={<ProductAdmin />} />
