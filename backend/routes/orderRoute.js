@@ -1,25 +1,24 @@
 const express = require("express");
-const { isAuth, isAdmin } = require("../util.js");
 const {
+  createOrder,
   getOrders,
   getOrder,
-  deleteOrder,
-  userAllOrder,
-  summaryOrder,
   deliverOrder,
+  orderMine,
+  deleteOrder,
+  summaryOrder,
   paidOrder,
-  createOrder,
 } = require("../controllers/orderController.js");
-
+const { isAuth, isAdmin } = require("../util.js");
 const orderRouter = express.Router();
 
+orderRouter.post("/", isAuth, createOrder);
 orderRouter.get("/", isAuth, isAdmin, getOrders);
-orderRouter.get("/summary", isAuth, isAdmin, summaryOrder);
-orderRouter.get("/user", isAuth, userAllOrder);
-orderRouter.get("/:id", getOrder);
-orderRouter.put("/:id/deliver", isAuth, deliverOrder);
-orderRouter.put("/:id/paid", isAuth, paidOrder);
+orderRouter.get("/:id", isAuth, getOrder);
 orderRouter.delete("/:id", isAuth, isAdmin, deleteOrder);
-orderRouter.post("/", createOrder);
+orderRouter.put("/:id/deliver", isAuth, isAdmin, deliverOrder);
+orderRouter.put("/:id/paid", isAuth, paidOrder);
+orderRouter.get("/mine", isAuth, orderMine);
+orderRouter.get("/summary", isAuth, isAdmin, summaryOrder);
 
 module.exports = orderRouter;
